@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>testing react</title>
+	<style type="text/css">
+		.other-button{
+			margin: 10px 0px;
+		}
+		.like-button{
+			margin: 10px 0px;
+		}
+	</style>
+</head>
+<body>
+	<p>hello</p>
+	
+	<div id="like_button_container" data-settings='{"reactComponent": "LikeButton", "options": {"name": "Like Button", "class": "like-button"}}'></div>
+	
+	<div id="test_div" data-settings='{"reactComponent": "OtherButton", "options": {"name": "Other Button", "class": "other-button"}}'></div>
+	
+	
+	<div id="new_div" data-settings='{"reactComponent": "NewButton", "options": {"name": "New Like Button", "class": "like-button"}}'></div>
+	
+	
+	<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
+	
+	<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+
+	<!-- Load our React component. -->
+	<script src="like_button.js"></script>
+	<script src="other_button.js"></script>
+	<script src="new_button.js"></script>
+	
+	<script type="text/javascript">
+		
+		const e = React.createElement;
+		
+		applyReactComponent(document.querySelector('#test_div'));
+		
+		applyReactComponent(document.querySelector('#like_button_container'));
+		
+		applyReactComponent(document.querySelector('#new_div'));
+		
+		function applyReactComponent(element){
+			
+			var settings = JSON.parse(element.dataset.settings);
+			
+			console.log(settings);
+			
+			var classes = {
+				LikeButton,
+				OtherButton,
+				NewButton
+			}
+			
+			if(classes[settings.reactComponent]){
+				ReactDOM.render(e(classes[settings.reactComponent], settings.options), element);
+			}
+		}
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+	"template": "TemplateOne",
+	"nav": [
+		{
+			"label": "Home",
+			"key": "home",
+			"link": "/"
+		},
+		{
+			"label": "About Us",
+			"key": "about_us",
+			"link": "/about-us"
+		}
+	]
+}
