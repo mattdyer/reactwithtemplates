@@ -4,12 +4,12 @@
 		{
 			"label": "Home",
 			"key": "home",
-			"link": "/"
+			"link": "#"
 		},
 		{
 			"label": "About Us",
 			"key": "about_us",
-			"link": "#about-us"
+			"link": "#"
 		}
 	],
 	"pages": {

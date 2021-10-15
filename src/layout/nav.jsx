@@ -30,7 +30,7 @@ class Nav extends React.Component {
     var nav = this;
     
     var navItems = this.props.items.map(function(item){
-      return <div key={item.key}><a href="#" data-page={item.key} onClick={nav.setCurrentPage}>{item.label}</a></div>;
+      return <div key={item.key}><a href={item.link} data-page={item.key} onClick={nav.setCurrentPage}>{item.label}</a></div>;
     });
     
     return (
