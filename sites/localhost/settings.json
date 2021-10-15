@@ -9,7 +9,15 @@
 		{
 			"label": "About Us",
 			"key": "about_us",
-			"link": "/about-us"
+			"link": "#about-us"
 		}
-	]
+	],
+	"pages": {
+		"home":{
+			"layout": "HomePage"
+		},
+		"about_us":{
+			"layout": "ContentPage"
+		}
+	}
 }

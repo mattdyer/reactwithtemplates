@@ -8,53 +8,26 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var TemplateOne = function (_React$Component) {
-  _inherits(TemplateOne, _React$Component);
+var HomePage = function (_React$Component) {
+  _inherits(HomePage, _React$Component);
 
-  function TemplateOne(props) {
-    _classCallCheck(this, TemplateOne);
+  function HomePage(props) {
+    _classCallCheck(this, HomePage);
 
-    var _this = _possibleConstructorReturn(this, (TemplateOne.__proto__ || Object.getPrototypeOf(TemplateOne)).call(this, props));
-
-    console.log('template props');
-    console.log(props);
-
-    //this.state = props.settings;
-
-
-    return _this;
+    return _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props));
   }
 
-  _createClass(TemplateOne, [{
-    key: 'renderPage',
-    value: function renderPage() {
-      var pageComponents = {
-        HomePage: HomePage,
-        ContentPage: ContentPage
-      };
-
-      console.log(this.props.currentpage);
-      console.log(this.props.settings.pages);
-
-      var PageComponent = pageComponents[this.props.settings.pages[this.props.currentpage].layout];
-
-      return React.createElement(PageComponent, null);
-    }
-  }, {
+  _createClass(HomePage, [{
     key: 'render',
     value: function render() {
-
-      var page = this.renderPage();
 
       return React.createElement(
         'div',
         null,
-        'Template One',
-        React.createElement(Nav, { items: this.props.settings.nav, updateCurrentPage: this.props.updateCurrentPage, currentpage: this.props.currentpage }),
-        page
+        'Home Page'
       );
     }
   }]);
 
-  return TemplateOne;
+  return HomePage;
 }(React.Component);

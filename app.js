@@ -16,9 +16,11 @@ var App = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-    _this.state = { settings: {}, settingsRetrieved: false };
+    _this.state = { settings: {}, settingsRetrieved: false, currentpage: 'home' };
 
     _this.readSettings();
+
+    _this.updateCurrentPage = _this.updateCurrentPage.bind(_this);
 
     return _this;
   }
@@ -35,6 +37,11 @@ var App = function (_React$Component) {
       }).then(function (data) {
         return _this2.setState({ settings: data, settingsRetrieved: true });
       });
+    }
+  }, {
+    key: 'updateCurrentPage',
+    value: function updateCurrentPage(newPage) {
+      this.setState({ currentpage: newPage });
     }
   }, {
     key: 'renderLoadingScreen',
@@ -54,7 +61,7 @@ var App = function (_React$Component) {
 
       var TemplateComponent = templateComponents[this.state.settings.template];
 
-      return React.createElement(TemplateComponent, { settings: this.state.settings });
+      return React.createElement(TemplateComponent, { settings: this.state.settings, updateCurrentPage: this.updateCurrentPage, currentpage: this.state.currentpage });
     }
   }, {
     key: 'render',
@@ -62,9 +69,9 @@ var App = function (_React$Component) {
       var result = '';
 
       if (this.state.settingsRetrieved) {
-        result = renderTemplate();
+        result = this.renderTemplate();
       } else {
-        result = renderLoadingScreen();
+        result = this.renderLoadingScreen();
       }
 
       return result;

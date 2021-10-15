@@ -18,30 +18,43 @@ var Nav = function (_React$Component) {
 
     console.log(props.items);
 
-    //this.state = props.items;
-
+    _this.setCurrentPage = _this.setCurrentPage.bind(_this);
 
     return _this;
   }
 
   _createClass(Nav, [{
-    key: 'render',
+    key: "setCurrentPage",
+    value: function setCurrentPage(e) {
+
+      var itemData = e.target.dataset;
+
+      console.log(e.target.dataset);
+
+      if (itemData.page) {
+        this.props.updateCurrentPage(itemData.page);
+      }
+    }
+  }, {
+    key: "render",
     value: function render() {
+
+      var nav = this;
 
       var navItems = this.props.items.map(function (item) {
         return React.createElement(
-          'div',
+          "div",
           { key: item.key },
           React.createElement(
-            'a',
-            { href: item.link },
+            "a",
+            { href: "#", "data-page": item.key, onClick: nav.setCurrentPage },
             item.label
           )
         );
       });
 
       return React.createElement(
-        'div',
+        "div",
         null,
         navItems
       );

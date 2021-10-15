@@ -5,9 +5,11 @@ class App extends React.Component {
     
     super(props);
     
-    this.state = {settings: {}, settingsRetrieved: false};
+    this.state = {settings: {}, settingsRetrieved: false, currentpage: 'home'};
     
     this.readSettings();
+    
+    this.updateCurrentPage = this.updateCurrentPage.bind(this);
     
   }
   
@@ -18,6 +20,10 @@ class App extends React.Component {
       .then(response => response.json())
       .then(data => this.setState({settings: data, settingsRetrieved: true}));
     
+  }
+  
+  updateCurrentPage(newPage){
+    this.setState({currentpage: newPage});
   }
   
   renderLoadingScreen(){
@@ -37,7 +43,7 @@ class App extends React.Component {
     var TemplateComponent = templateComponents[this.state.settings.template];
       
     return(
-      <TemplateComponent settings={this.state.settings}></TemplateComponent>
+      <TemplateComponent settings={this.state.settings} updateCurrentPage={this.updateCurrentPage} currentpage={this.state.currentpage}></TemplateComponent>
     );
   }
   
@@ -45,9 +51,9 @@ class App extends React.Component {
     var result = '';
     
     if(this.state.settingsRetrieved){
-      result = renderTemplate();
+      result = this.renderTemplate();
     }else{
-      result = renderLoadingScreen();
+      result = this.renderLoadingScreen();
     }
     
     return result

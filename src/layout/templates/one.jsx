@@ -5,21 +5,41 @@ class TemplateOne extends React.Component {
     
     super(props);
     
-    console.log(props.settings);
+    console.log('template props');
+    console.log(props);
     
     //this.state = props.settings;
     
     
   }
   
+  renderPage(){
+    var pageComponents = {
+      HomePage,
+      ContentPage
+    }
+    
+    console.log(this.props.currentpage);
+    console.log(this.props.settings.pages);
+    
+    var PageComponent = pageComponents[this.props.settings.pages[this.props.currentpage].layout];
+    
+    return(
+      <PageComponent></PageComponent>
+    );
+  }
+  
   render() {
     
-    console.log(this.props);
+    
+    var page = this.renderPage();
+    
     
     return (
       <div>
         Template One
-        <Nav items={this.props.settings.nav}></Nav>
+        <Nav items={this.props.settings.nav} updateCurrentPage={this.props.updateCurrentPage} currentpage={this.props.currentpage}></Nav>
+        {page}
       </div>
     );
     
